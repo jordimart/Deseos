@@ -20,6 +20,11 @@
         <ion-input (keyup.enter)="agregar()"
         type="text" [(ngModel)]="nombreItem" name="nombreItem"></ion-input>
       </ion-item>
+      <button (click)="agregar()"
+      ion-button class="button-block">
+        Agregar item
+      </button>
+
     </ion-card-content>
   </ion-card>
 
@@ -29,7 +34,6 @@
       <h3>Items agregados</h3>
       <!-- <ion-card-content> -->
         <ion-list>
-
           <ion-item *ngFor="let item of items; let i = index">
             <button ion-button color="dark" clear>
               {{ item.nombre }}
