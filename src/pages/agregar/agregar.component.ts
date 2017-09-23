@@ -6,28 +6,29 @@ import { Lista, ListaItem } from '../../app/clases/index';
 })
 export class AgregarComponent implements OnInit {
 
-nombreLista:string;
-nombreItem:string = "";
+  nombreLista: string;
+  nombreItem: string = "";
 
-items:ListaItem[] = [];
+  items: ListaItem[] = [];
 
-  constructor() {  }
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  agregar(){
+  agregar() {
 
-    if( this.nombreItem.length == 0){
+    if (this.nombreItem.length == 0) {
       return;
     }
 
     let item = new ListaItem();
     item.nombre = this.nombreItem;
 
-    this.items.push( item );
+    this.items.push(item);
     this.nombreItem = "";
+  }
 
-
-
+  borrar(i:number) {
+      this.items.splice(i, 1);
   }
 }
