@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Lista, ListaItem } from '../../app/clases/index';
 import { ListaDeseosService } from '../../app/services/lista-deseos.service';
 
@@ -9,24 +9,54 @@ import { ListaDeseosService } from '../../app/services/lista-deseos.service';
 })
 export class DetalleComponent implements OnInit {
 
-  idx:number;
-  lista:Lista;
+  idx: number;
+  lista: Lista;
 
   constructor(
-    public navCtril:NavController,
-    public navParams:NavParams,
-    public _listaDeseos:ListaDeseosService
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public _listaDeseos: ListaDeseosService,
+    public alertCtrl: AlertController
   ) {
 
     this.idx = this.navParams.get("idx");
     this.lista = this.navParams.get("lista");
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  actualizar( item:ListaItem ){
+  actualizar(item: ListaItem) {
     item.completado = !item.completado;
 
+    let todosMarcados = true;
+    for (let item of this.lista.items) {
+      if (!item.completado) {
+        todosMarcados = false;
+        break;
+      }
+
+    }
+
+    this.lista.terminada = todosMarcados;
     this._listaDeseos.actualizarData();
+  }
+
+  borrarLista(lista: Lista) {
+
+    let confirm = this.alertCtrl.create({
+      title: this.lista.nombre,
+      message: '¿Está seguro de querer borrar la lista?',
+      buttons: ['Cancelar',
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this._listaDeseos.eliminarLista(this.idx);
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    confirm.present();
+
   }
 }
