@@ -7,8 +7,8 @@ import { MyApp } from './app.component';
 import { ListaDeseosService } from './services/lista-deseos.service';
 
 // Pipes
-
 import { PlaceholderPipe } from './pipes/placeholder.pipe';
+import { PendientesPipe } from './pipes/pendientes.pipe';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -24,6 +24,7 @@ import { DetalleComponent } from '../pages/detalle/detalle.component';
   declarations: [
     MyApp,
     PlaceholderPipe,
+    PendientesPipe,
     PendientesComponent,
     TerminadosComponent,
     AgregarComponent,
