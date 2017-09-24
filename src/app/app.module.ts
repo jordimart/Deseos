@@ -9,7 +9,6 @@ import { ListaDeseosService } from './services/lista-deseos.service';
 // Pipes
 import { PlaceholderPipe } from './pipes/placeholder.pipe';
 import { PendientesPipe } from './pipes/pendientes.pipe';
-import { TerminadosPipe } from './pipes/terminados.pipe';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -26,7 +25,6 @@ import { DetalleComponent } from '../pages/detalle/detalle.component';
     MyApp,
     PlaceholderPipe,
     PendientesPipe,
-    TerminadosPipe,
     PendientesComponent,
     TerminadosComponent,
     AgregarComponent,
